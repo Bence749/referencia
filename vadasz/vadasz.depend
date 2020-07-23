@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1587921686 source:c:\users\bence749\documents\c++\vadasz\main.cpp
+	<iostream>
+	<utility>
+	"hunter.h"
+	"elephant.h"
+
+1587914397 source:c:\users\bence749\documents\c++\vadasz\hunter.cpp
+
+1587921705 c:\users\bence749\documents\c++\vadasz\hunter.h
+	"trophy.h"
+	<string>
+	<vector>
+
+1587919930 c:\users\bence749\documents\c++\vadasz\trophy.h
+	<string>
+	"animal.h"
+
+1587921460 c:\users\bence749\documents\c++\vadasz\animal.h
+	<string>
+
+1587919392 c:\users\bence749\documents\c++\vadasz\elephant.h
+
