@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1589925871 source:c:\users\bereg\documents\c++\emeltinfo\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+	<list>
+	<algorithm>
+
