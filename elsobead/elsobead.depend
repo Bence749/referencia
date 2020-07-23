@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1575916216 source:c:\users\bence749\documents\c\elsobead\main.c
+	<stdio.h>
+	"elsobead.h"
+
+1575916102 source:c:\users\bence749\documents\c\elsobead\elsobead.c
+	"elsobead.h"
+
+1575915799 c:\users\bence749\documents\c\elsobead\elsobead.h
+
