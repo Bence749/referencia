@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1587398464 source:c:\users\bence749\documents\c++\benzinkut\main.cpp
+	<iostream>
+	"gasstation.h"
+	"customer.h"
+
+1587399713 c:\users\bence749\documents\c++\benzinkut\station.h
+	<iostream>
+
+1587318841 c:\users\bence749\documents\c++\benzinkut\costumer.h
+	"station.h"
+
+1587399537 source:c:\users\bence749\documents\c++\benzinkut\customer.cpp
+	<iostream>
+	"customer.h"
+	"station.h"
+	"cashregister.h"
+
+1587398112 c:\users\bence749\documents\c++\benzinkut\customer.h
+	"gasstation.h"
+
+1587398700 source:c:\users\bence749\documents\c++\benzinkut\gasstation.cpp
+	"gasstation.h"
+	"cashregister.h"
+	"station.h"
+
+1587399796 c:\users\bence749\documents\c++\benzinkut\gasstation.h
+	"cashregister.h"
+	"station.h"
+	<vector>
+	<iostream>
+
+1587323135 source:c:\users\bence749\documents\c++\benzinkut\cashregister.cpp
+	<iostream>
+	"cashregister.h"
+	"gasstation.h"
+
+1587399693 c:\users\bence749\documents\c++\benzinkut\cashregister.h
+	<iostream>
+	"station.h"
+
