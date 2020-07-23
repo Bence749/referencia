@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1588507861 source:c:\users\bence749\documents\c++\algoritmuszh1\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cstdlib>
+
