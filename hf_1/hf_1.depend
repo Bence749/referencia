@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1582579200 source:c:\users\bence749\documents\c++\hf_1\main.cpp
+	<iostream>
+	<vector>
+
