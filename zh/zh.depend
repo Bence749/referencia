@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1591982719 source:c:\users\bereg\documents\c++\zh\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<sstream>
+	"library/seqinfileenumerator.hpp"
+	"library/stringstreamenumerator.hpp"
+	"library/linsearch.hpp"
+	"library/counting.hpp"
+	"library/maxsearch.hpp"
+	"library/enumerator.hpp"
+
+1591970930 c:\users\bereg\documents\c++\zh\library\seqinfileenumerator.hpp
+	<fstream>
+	<typeinfo>
+	<sstream>
+	"enumerator.hpp"
+
+1591970930 c:\users\bereg\documents\c++\zh\library\enumerator.hpp
+
+1591970930 c:\users\bereg\documents\c++\zh\library\stringstreamenumerator.hpp
+	<typeinfo>
+	<sstream>
+	"enumerator.hpp"
+
+1591970930 c:\users\bereg\documents\c++\zh\library\linsearch.hpp
+	"procedure.hpp"
+
+1591970930 c:\users\bereg\documents\c++\zh\library\procedure.hpp
+	<cstddef>
+	"enumerator.hpp"
+	<iostream>
+	<vector>
+
+1591970930 c:\users\bereg\documents\c++\zh\library\counting.hpp
+	"summation.hpp"
+
+1591970930 c:\users\bereg\documents\c++\zh\library\summation.hpp
+	"procedure.hpp"
+	<iostream>
+
+1591970930 c:\users\bereg\documents\c++\zh\library\maxsearch.hpp
+	"procedure.hpp"
+
