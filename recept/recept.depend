@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1586190072 source:c:\users\bence749\documents\c++\recept\main.cpp
+	<iostream>
+	"recipe.h"
+
+1586190968 c:\users\bence749\documents\c++\recept\recipe.h
+	<string>
+	<fstream>
+	<sstream>
+
+1586190962 source:c:\users\bence749\documents\c++\recept\recipe.cpp
+	"recipe.h"
+
