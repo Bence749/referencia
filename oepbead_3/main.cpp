@@ -1,0 +1,147 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <chrono>
+#include <thread>
+#include <time.h>
+#include "weather.h"
+#include "land.h"
+#include "simulation.h"
+
+using namespace std;
+
+void create(string input, vector<Simulation*> &lands, vector<Land*> &landTypes, int *hum)
+{
+    ifstream f(input);
+    if (f.fail())
+    {
+        cout << "Wrong file name!";
+        exit(1);
+    }
+    int numberOf;
+    f >> numberOf;
+    if( f.eof() )
+    {
+        cout << "The given file is empty!";
+        exit(1);
+    }
+    lands.resize(numberOf);
+    landTypes.resize(numberOf);
+    for(int i = 0; i < numberOf; i++)
+    {
+        char type;
+        int water;
+        std::string name;
+        f >> name >> type >> water;
+        lands[i] = new Simulation(name, water);
+        switch( type )
+        {
+        case 'D':
+            landTypes[i] = Desert::instance();
+            break;
+        case 'G':
+            landTypes[i] = Green::instance();
+            break;
+        case 'L':
+            landTypes[i] = Lake::instance();
+            break;
+        default:
+            cout << "Bad input!";
+            exit(1);
+            break;
+        }
+    }
+    f >> *hum;
+}
+
+bool allTheSame( vector<Land*> lands )
+{
+    bool out = true;
+    char first = lands[0]->getType();
+    for(unsigned int i = 0; i < lands.size() && out; i++)
+        out = out && (lands[i]->getType() == first);
+    return out;
+}
+
+//#define NORMAL_MODE
+#ifdef NORMAL_MODE
+
+int main()
+{
+    srand(time(NULL));
+
+    int humidity;
+    vector<Simulation*> lands;
+    vector<Land*> landTypes;
+    create("in.txt", lands, landTypes, &humidity);
+
+    int k = 1;
+    Weather* weather;
+    int sunny = 0, cloudy = 0, rainy = 0;
+    while( !allTheSame(landTypes) )
+    {
+        int w = (humidity > 70 ? 2 : ((humidity < 40) ? 0 : (( (humidity - 40)*3.3 > (rand() % 100)) ? 2 : 1)));
+        switch(w)
+        {
+        case 0:
+            weather = Sunny::instance(); cout << "|--- " << weather->getW() << " | " << humidity << "% ---|" << endl; sunny++; break;
+        case 1:
+            weather = Cloudy::instance(); cout << "|--- " << weather->getW() << " | " << humidity << "% ---|" << endl; cloudy++; break;
+        case 2:
+            weather = Rainy::instance(); cout << "|--- " << weather->getW() << " | " << humidity << "% ---|" << endl; humidity = 30; rainy++; break;
+        }
+        for(unsigned int i = 0; i < lands.size(); i++)
+        {
+            lands[i]->change(landTypes[i], weather, &humidity);
+            cout << lands[i]->getName() << ": Type->" << landTypes[i]->getType() << " | Water->" << lands[i]->getWater() << "km3" << endl;
+        }
+        cout << "|--- " << k << ". round ---|" << endl;
+        cout << "Sunny: " << sunny << endl << "Cloudy: " << cloudy << endl << "Rainy: " << rainy << endl;
+        chrono::milliseconds dura(200);
+        this_thread::sleep_for(dura); // Amennyiben szebb kiírást szeretnénk
+        system("cls");
+        k++;
+    }
+    Green::destroy();
+    Desert::destroy();
+    Lake::destroy();
+    Cloudy::destroy();
+    Rainy::destroy();
+    Sunny::destroy();
+    return 0;
+    }
+
+#else
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
+TEST_CASE("Same type lands")
+{
+    vector<Land*> landTypes;
+    vector<Simulation*> lands;
+    int hum;
+    create("t1.txt", lands, landTypes, &hum);
+    CHECK(allTheSame(landTypes));
+    CHECK(landTypes[1]->getType() == 'L');
+    CHECK(lands[1]->getName() == "Lagymanyos");
+    CHECK(lands[2]->getWater() == 80);
+    lands[0]->nullWater();
+    CHECK(lands[0]->getWater() == 0);
+    lands[0]->changeWater(15);
+    lands[0]->changeWater(-6);
+    CHECK(lands[0]->getWater() == 9);
+    lands[1]->change(landTypes[1], Sunny::instance(), &hum);
+    CHECK(landTypes[1]->getType() == 'G');
+}
+
+TEST_CASE("Different type lands")
+{
+    vector<Land*> landTypes;
+    vector<Simulation*> lands;
+    int hum;
+    create("t2.txt", lands, landTypes, &hum);
+    CHECK_FALSE(allTheSame(landTypes));
+}
+
+
+#endif //NORMAL_MODE
