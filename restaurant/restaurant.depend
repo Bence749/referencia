@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1585586155 source:c:\users\bence749\documents\c++\restaurant\main.cpp
+	<iostream>
+	<map>
+	"enor.h"
+
+1585353065 source:c:\users\bence749\documents\c++\restaurant\enor.cpp
+	"enor.h"
+
+1585352816 c:\users\bence749\documents\c++\restaurant\enor.h
+	<string>
+	<fstream>
+	<utility>
+
