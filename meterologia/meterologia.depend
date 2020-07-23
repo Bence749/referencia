@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1578178957 source:c:\users\bence749\documents\c++\meterologia\main.cpp
+	<iostream>
+	<cstdlib>
+	<string>
+	<cmath>
+
